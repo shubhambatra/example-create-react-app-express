@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 
 import logo from './logo.svg';
 
@@ -26,6 +27,7 @@ class App extends Component {
     return body;
   };
 
+
   handleSubmit = async e => {
     e.preventDefault();
     const response = await fetch('/api/world', {
@@ -44,18 +46,14 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <div>
+            <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Chat</li>
+            </ul>
+            {this.props.children}
+         </div>
         </header>
         <p>{this.state.response}</p>
         <form onSubmit={this.handleSubmit}>
